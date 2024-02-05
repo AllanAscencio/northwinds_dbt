@@ -3,8 +3,8 @@ WITH source as (
 ),
 renamed as (
     SELECT 
-    concat('rds-',replace(lower(company_name), ' ', '-')) as company_id,
-    company_name as name,
+    concat('rds-',replace(lower(company_name), ' ', '-')) as name,
+    company_name,
     max(address) as address,
     max(city) as city,
     max(postal_code) as postal_code,
