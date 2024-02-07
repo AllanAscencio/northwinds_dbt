@@ -12,7 +12,7 @@ WITH formatted AS (
                 '(' || SUBSTRING(REPLACE(phone, '-', '') FROM 2 FOR 3) || ') ' || 
                 SUBSTRING(REPLACE(phone, '-', '') FROM 5 FOR 3) || '-' ||
                 SUBSTRING(REPLACE(phone, '-', '') FROM 8 FOR 4)
-            ELSE phone -- Handles phone numbers not matching the above conditions
+            ELSE phone
         END AS phone,
         'hubspot-' || REPLACE(LOWER(business_name), ' ', '-') AS company_id
     FROM
