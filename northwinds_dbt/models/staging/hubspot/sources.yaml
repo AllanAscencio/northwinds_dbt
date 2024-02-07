@@ -1,7 +1,7 @@
 version: 2
 sources:
-  - name: rds
+  - name: hubspot
     database: northwinds
-    schema: public
+    schema: g_leal
     tables:
-      - name: g_leal.northwinds_hubspot
+      - name: northwinds_hubspot

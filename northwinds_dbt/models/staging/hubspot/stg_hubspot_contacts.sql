@@ -16,7 +16,7 @@ WITH formatted AS (
         END AS phone,
         'hubspot-' || REPLACE(LOWER(business_name), ' ', '-') AS company_id
     FROM
-        g_leal.northwinds_hubspot
+        {{ source('hubspot', 'northwinds_hubspot')}} 
 )
 
 SELECT * FROM formatted

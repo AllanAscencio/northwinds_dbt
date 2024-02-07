@@ -1,24 +1,29 @@
-WITH customers AS (
-  SELECT * FROM {{ source('rds', 'customers') }}
-), companies AS (
-    SELECT * FROM {{ ref('stg_rds_companies') }}
+WITH customers as (
+  SELECT * FROM {{ source('rds', 'customers')}} 
+), 
+companies as (
+  SELECT * FROM {{ ref('stg_rds_companies') }}
 ),
-renamed AS (
+renamed as (
     SELECT 
-    CONCAT('rds-', customer_id) AS customer_id, 
-    CASE
-        WHEN LENGTH(REPLACE(phone, '-', '')) = 10 THEN
-            '(' || SUBSTRING(REPLACE(phone, '-', '') FROM 1 FOR 3) || ') ' || 
-            SUBSTRING(REPLACE(phone, '-', '') FROM 4 FOR 3) || '-' ||
-            SUBSTRING(REPLACE(phone, '-', '') FROM 7 FOR 4)
-        WHEN LENGTH(REPLACE(phone, '-', '')) = 11 THEN
-            '(' || SUBSTRING(REPLACE(phone, '-', '') FROM 2 FOR 3) || ') ' || 
-            SUBSTRING(REPLACE(phone, '-', '') FROM 5 FOR 3) || '-' ||
-            SUBSTRING(REPLACE(phone, '-', '') FROM 8 FOR 4)
-        ELSE REPLACE(phone, '-', ' ')
-    END AS phone,
-    CONCAT('rds-', REPLACE(LOWER(companies.name), ' ', '-')) AS company_id
+    concat('rds-', customer_id) as contact_id, 
+    SPLIT_PART(contact_name, ' ', 1) as first_name,
+    SPLIT_PART(contact_name, ' ', -1) as last_name,
+    REPLACE(TRANSLATE(phone, '(,),-,.', ''), ' ', '') as updated_phone,
+    business_name
     FROM customers 
-    JOIN companies ON customers.company_name = companies.name
+    JOIN companies ON companies.name = customers.company_name 
+), final as 
+ (SELECT
+   contact_id,
+   first_name,
+   last_name,
+   CASE WHEN LENGTH(updated_phone) = 10 THEN
+       '(' || SUBSTRING(updated_phone, 1, 3) || ') ' || 
+       SUBSTRING(updated_phone, 4, 3) || '-' ||
+       SUBSTRING(updated_phone, 7, 4) 
+       END as phone,
+   business_name
+  FROM renamed
 )
-SELECT * FROM renamed
+SELECT * FROM final

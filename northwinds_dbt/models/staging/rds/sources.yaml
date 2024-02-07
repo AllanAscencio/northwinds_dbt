@@ -4,7 +4,7 @@ sources:
     database: northwinds
     schema: public
     tables:
-      - name: customers
+      - name: companies
       - name: suppliers
-
+      - name: customers
           
