@@ -1,0 +1,54 @@
+[0m18:49:44.385199 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000261CED865D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000261CF163110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000261CF163890>]}
+
+
+============================== 18:49:44.389732 | 246f4c5e-1bf8-432d-91f9-bb140e2b87ae ==============================
+[0m18:49:44.389732 [info ] [MainThread]: Running with dbt=1.8.6
+[0m18:49:44.390687 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\allan\\.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt init dbt_revenue_tracker', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m18:49:44.419194 [debug] [MainThread]: Starter project path: C:\Users\allan\Desktop\leet-repo\northwinds-setup\venv\Lib\site-packages\dbt\include\starter_project
+[0m18:49:44.471734 [info ] [MainThread]: 
+Your new dbt project "dbt_revenue_tracker" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m18:49:44.473695 [info ] [MainThread]: Setting up your profile.
+[0m18:49:48.894657 [error] [MainThread]: Encountered an error:
+
+[0m18:49:48.941157 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\allan\Desktop\leet-repo\northwinds-setup\venv\Lib\site-packages\dbt\cli\requires.py", line 138, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan\Desktop\leet-repo\northwinds-setup\venv\Lib\site-packages\dbt\cli\requires.py", line 101, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan\Desktop\leet-repo\northwinds-setup\venv\Lib\site-packages\dbt\cli\main.py", line 470, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "C:\Users\allan\Desktop\leet-repo\northwinds-setup\venv\Lib\site-packages\dbt\task\init.py", line 347, in run
+    self.setup_profile(profile_name)
+  File "C:\Users\allan\Desktop\leet-repo\northwinds-setup\venv\Lib\site-packages\dbt\task\init.py", line 262, in setup_profile
+    adapter = self.ask_for_adapter_choice()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan\Desktop\leet-repo\northwinds-setup\venv\Lib\site-packages\dbt\task\init.py", line 243, in ask_for_adapter_choice
+    numeric_choice = click.prompt(prompt_msg, type=click.INT)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan\Desktop\leet-repo\northwinds-setup\venv\Lib\site-packages\click\termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\allan\Desktop\leet-repo\northwinds-setup\venv\Lib\site-packages\click\termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m18:49:48.946159 [debug] [MainThread]: Command `dbt init` failed at 18:49:48.946159 after 4.64 seconds
+[0m18:49:48.947159 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000261C8E9DD50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000261CF184D50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000261CF10FB10>]}
+[0m18:49:48.948162 [debug] [MainThread]: Flushing usage events

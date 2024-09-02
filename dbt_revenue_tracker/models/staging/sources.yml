@@ -1,0 +1,7 @@
+version: 2
+sources:
+  - name: postgres
+    database: northwinds_2
+    schema: allan
+    tables:
+      - name: cities
